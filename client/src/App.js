@@ -10,6 +10,7 @@ import SearchPage from "./pages/SearchPage";
 import CategoryPage from "./pages/CategoryPage"
 import PropertyList from "./pages/PropertyList"
 import ReservationList from "./pages/ReservationList";
+import TripList from "./pages/TripList";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/properties/category/:category" element={<CategoryPage />} />
           <Route path="/:userId/properties" element={<PropertyList />} />
           <Route path="/:userId/reservations" element={<ReservationList />} />
+          <Route path="/:userId/trips" element={<TripList />} />
           <Route path="/properties/search/:search" element={<SearchPage />} />
         </Routes>
       </BrowserRouter>

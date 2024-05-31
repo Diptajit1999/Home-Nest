@@ -5,7 +5,7 @@ import "../styles/List.scss";
 import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import { setReservationList } from "../redux/state";
+import { setTripList } from "../redux/state";
 import ListingCard from "../components/ListingCard";
 import Footer from "../components/Footer";
 
@@ -19,32 +19,32 @@ const EmptyMessage = styled(Typography)`
   border-radius: 10px;
 `;
 
-const ReservationList = () => {
+const TripList = () => {
   const [loading, setLoading] = useState(true);
   const userId = useSelector((state) => state.user._id);
-  const reservationList = useSelector((state) => state.user.reservationList);
+  const tripList = useSelector((state) => state.user.tripList);
 
   const dispatch = useDispatch();
 
-  const getReservationList = async () => {
+  const getTripList = async () => {
     try {
       const response = await fetch(
-        `https://homenest-backend.onrender.com/users/${userId}/reservations`,
+        `https://homenest-backend.onrender.com/users/${userId}/trips`,
         {
           method: "GET",
         }
       );
 
       const data = await response.json();
-      dispatch(setReservationList(data));
+      dispatch(setTripList(data));
       setLoading(false);
     } catch (err) {
-      console.log("Fetch Reservation List failed!", err.message);
+      console.log("Fetch Trip List failed!", err.message);
     }
   };
 
   useEffect(() => {
-    getReservationList();
+    getTripList();
   }, []);
 
   return loading ? (
@@ -52,10 +52,10 @@ const ReservationList = () => {
   ) : (
     <>
       <Navbar />
-      <h1 className="title-list">Your Reservation List</h1>
+      <h1 className="title-list">Your Trip List</h1>
       <div className="list">
-        {reservationList && reservationList.length > 0 ? (
-          reservationList.map(({ listingId, hostId, startDate, endDate, totalPrice, booking=true }) => (
+        {tripList && tripList.length > 0 ? (
+          tripList.map(({ listingId, hostId, startDate, endDate, totalPrice, booking=true }) => (
             <ListingCard
               key={listingId._id}
               listingId={listingId._id}
@@ -72,7 +72,7 @@ const ReservationList = () => {
             />
           ))
         ) : (
-          <EmptyMessage variant="body1">Your reservation list is empty.</EmptyMessage>
+          <EmptyMessage variant="body1">Your trip list is empty.</EmptyMessage>
         )}
       </div>
       <Footer />
@@ -80,4 +80,4 @@ const ReservationList = () => {
   );
 };
 
-export default ReservationList;
+export default TripList;
