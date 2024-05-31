@@ -1,15 +1,15 @@
 import { categories } from "../data";
-import "../styles/Categories.scss"
+import "../styles/Categories.scss";
 import { Link } from "react-router-dom";
 
 const Categories = () => {
   return (
     <div className="categories">
-      <h1>Explore Top Categories</h1>
+      <h1>Discover Our Top Picks</h1>
       <p>
-        Explore our wide range of vacation rentals that cater to all types of
-        travelers. Immerse yourself in the local culture, enjoy the comforts of
-        home, and create unforgettable memories in your dream destination.
+        Check out our wide array of vacation rentals that meet the needs of all
+        types of travelers. Dive into local culture, enjoy the convenience of
+        home, and create unforgettable experiences in your desired destination.
       </p>
 
       <div className="categories_list">
