@@ -3,6 +3,8 @@ const app=express()
 const cors=require("cors")
 const {connection}=require("./lib/db")
 const {authRouter}=require("./routes/auth")
+const {userRouter}=require("./routes/user.route")
+const {bookingRouter}=require("./routes/booking.route")
 require("dotenv").config()
 
 const Port=process.env.port || 5005
@@ -11,6 +13,8 @@ app.use(express.json())
 app.use(express.static("public"))
 
 app.use("/auth",authRouter)
+app.use("/user",userRouter)
+app.use("/booking",bookingRouter)
 
 app.listen(Port,async()=>{
     try {

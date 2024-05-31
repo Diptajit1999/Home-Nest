@@ -3,9 +3,12 @@ import './App.css';
 import HomePage from "./Pages/HomePage"
 import RegisterPage from "./Pages/RegisterPage"
 import LoginPage from "./Pages/LoginPage";
+
+
 function App() {
   return (
     <div >
+
      <BrowserRouter>
      <Routes>
       <Route path="/" element={<HomePage/>}/>

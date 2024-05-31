@@ -12,6 +12,7 @@ const RegisterPage = () => {
     profileImage: null,
   });
   const [matchedPassword, setMatchedPassword] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(""); // State for error message
   const navigate = useNavigate();
 
   console.log(formData);
@@ -48,9 +49,14 @@ const RegisterPage = () => {
 
       if (response.ok) {
         navigate("/login");
+      } else if (response.status === 409) {
+        setErrorMessage("Email already in use. Please use a different email.");
+      } else {
+        setErrorMessage("Registration failed. Please try again.");
       }
     } catch (error) {
       console.log("Registration Failed", error.message);
+      setErrorMessage("Registration failed. Please try again.");
     }
   };
 
@@ -100,6 +106,9 @@ const RegisterPage = () => {
           />
           {!matchedPassword && (
             <p style={{ color: "red" }}>Password is not matching</p>
+          )}
+          {errorMessage && (
+            <p style={{ color: "red" }}>{errorMessage}</p>
           )}
           <input
             id="image"
