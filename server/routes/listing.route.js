@@ -1,10 +1,12 @@
 const express=require("express");
 const listingRouter=express.Router()
+
 const multer = require("multer");
 
-const {ListingModel} = require("../models/Listing.model");
+const Listing = require("../models/Listing.model");
+const User = require("../models/user.model")
 
-// Configuiring Multer for file Uploading
+/* Configuration Multer for File Upload */
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "public/uploads/"); // Store uploaded files in the 'uploads' folder
@@ -16,9 +18,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// Create Listings Page
+/* CREATE LISTING */
 listingRouter.post("/create", upload.array("listingPhotos"), async (req, res) => {
   try {
+    /* Take the information from the form */
     const {
       creator,
       category,
@@ -48,7 +51,7 @@ listingRouter.post("/create", upload.array("listingPhotos"), async (req, res) =>
 
     const listingPhotoPaths = listingPhotos.map((file) => file.path)
 
-    const newListing = new ListingModel({
+    const newListing = new Listing({
       creator,
       category,
       type,
@@ -79,16 +82,16 @@ listingRouter.post("/create", upload.array("listingPhotos"), async (req, res) =>
   }
 });
 
-// Get lisitngs through Category
+/* GET lISTINGS BY CATEGORY */
 listingRouter.get("/", async (req, res) => {
   const qCategory = req.query.category
 
   try {
     let listings
     if (qCategory) {
-      listings = await ListingModel.find({ category: qCategory }).populate("creator")
+      listings = await Listing.find({ category: qCategory }).populate("creator")
     } else {
-      listings = await ListingModel.find().populate("creator")
+      listings = await Listing.find().populate("creator")
     }
 
     res.status(200).json(listings)
@@ -98,7 +101,7 @@ listingRouter.get("/", async (req, res) => {
   }
 })
 
-// Get listing through Search
+/* GET LISTINGS BY SEARCH */
 listingRouter.get("/search/:search", async (req, res) => {
   const { search } = req.params
 
@@ -106,9 +109,9 @@ listingRouter.get("/search/:search", async (req, res) => {
     let listings = []
 
     if (search === "all") {
-      listings = await ListingModel.find().populate("creator")
+      listings = await Listing.find().populate("creator")
     } else {
-      listings = await ListingModel.find({
+      listings = await Listing.find({
         $or: [
           { category: {$regex: search, $options: "i" } },
           { title: {$regex: search, $options: "i" } },
@@ -123,11 +126,11 @@ listingRouter.get("/search/:search", async (req, res) => {
   }
 })
 
-// Get Listing Details
+/* LISTING DETAILS */
 listingRouter.get("/:listingId", async (req, res) => {
   try {
     const { listingId } = req.params
-    const listing = await ListingModel.findById(listingId).populate("creator")
+    const listing = await Listing.findById(listingId).populate("creator")
     res.status(202).json(listing)
   } catch (err) {
     res.status(404).json({ message: "Listing can not found!", error: err.message })

@@ -1,9 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import HomePage from "./Pages/HomePage";
-import RegisterPage from "./Pages/RegisterPage";
-import LoginPage from "./Pages/LoginPage";
-import CreateListing from "./Pages/CreateListing";
+import HomePage from "./pages/HomePage";
+import RegisterPage from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
+import CreateListing from "./pages/CreateListing";
+import ListingDetails from "./pages/ListingDetails";
+import WishList from "./pages/WishList";
+
 
 
 function App() {
@@ -15,8 +18,8 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/create-listing" element={<CreateListing />} />
-          {/* <Route path="/properties/:listingId" element={<ListingDetails />} /> */}
-          
+          <Route path="/properties/:listingId" element={<ListingDetails />} />
+          <Route path="/:userId/wishList" element={<WishList />} />
         </Routes>
       </BrowserRouter>
     </div>

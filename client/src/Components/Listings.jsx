@@ -1,6 +1,6 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { categories } from "../data";
-import "../Styles/Listings.scss";
+import "../styles/Listings.scss";
 import ListingCard from "./ListingCard";
 import Loader from "./Loader";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,38 +9,33 @@ import { setListings } from "../redux/state";
 const Listings = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const listings = useSelector((state) => state.listings || []);
-  console.log(listings);
+  const listings = useSelector((state) => state.listings);
 
-  const getFeedListings = useCallback(async () => {
+  const getFeedListings = async () => {
     try {
       const response = await fetch(
         selectedCategory !== "All"
-          ? `https://homenest-backend.onrender.com/properties?category=${selectedCategory}`
-          : "https://homenest-backend.onrender.com/properties",
+          ? `http://localhost:7005/properties?category=${selectedCategory}`
+          : "http://localhost:7005/properties",
         {
           method: "GET",
         }
       );
 
       const data = await response.json();
-      console.log("Data properties fetching",data)
-      if (Array.isArray(data)) {
-        dispatch(setListings({ listings: data }));
-      } else {
-        dispatch(setListings({ listings: [] }));
-      }
+      dispatch(setListings({ listings: data }));
       setLoading(false);
     } catch (err) {
       console.log("Fetch Listings Failed", err.message);
     }
-  }, [dispatch, selectedCategory]);
+  };
 
   useEffect(() => {
     getFeedListings();
-  }, [selectedCategory, getFeedListings]);
+  }, [selectedCategory]);
 
   return (
     <>
@@ -72,10 +67,9 @@ const Listings = () => {
               category,
               type,
               price,
-              booking = false
+              booking=false
             }) => (
               <ListingCard
-                key={_id}
                 listingId={_id}
                 creator={creator}
                 listingPhotoPaths={listingPhotoPaths}

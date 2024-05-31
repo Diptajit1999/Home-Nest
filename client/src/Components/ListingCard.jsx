@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../Styles/ListingCard.scss";
+import "../styles/ListingCard.scss";
 import {
   ArrowForwardIos,
   ArrowBackIosNew,
@@ -50,7 +50,7 @@ const ListingCard = ({
   const patchWishList = async () => {
     if (user?._id !== creator._id) {
     const response = await fetch(
-      `https://homenest-backend.onrender.com/users/${user?._id}/${listingId}`,
+      `http://localhost:7005/users/${user?._id}/${listingId}`,
       {
         method: "PATCH",
         header: {
@@ -78,7 +78,7 @@ const ListingCard = ({
           {listingPhotoPaths?.map((photo, index) => (
             <div key={index} className="slide">
               <img
-                src={`https://homenest-backend.onrender.com/${photo?.replace("public", "")}`}
+                src={`http://localhost:7005/${photo?.replace("public", "")}`}
                 alt={`photo ${index + 1}`}
               />
               <div

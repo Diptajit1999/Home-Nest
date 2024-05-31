@@ -1,5 +1,5 @@
-import "../Styles/Footer.scss"
-import { LocalPhone, Email } from "@mui/icons-material"
+import "../styles/Footer.scss"
+import { LocationOn, LocalPhone, Email } from "@mui/icons-material"
 const Footer = () => {
   return (
     <div className="footer">

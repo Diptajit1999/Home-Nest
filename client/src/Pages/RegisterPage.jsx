@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import "../Styles/Register.scss";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"
+import "../styles/Register.scss";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -11,61 +11,52 @@ const RegisterPage = () => {
     confirmPassword: "",
     profileImage: null,
   });
-  const [matchedPassword, setMatchedPassword] = useState(true);
-  const [errorMessage, setErrorMessage] = useState(""); // State for error message
-  const navigate = useNavigate();
-
-  console.log(formData);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-
-    setFormData((prevData) => ({
-      ...prevData,
+    setFormData({
+      ...formData,
+      [name]: value,
       [name]: name === "profileImage" ? files[0] : value,
-    }));
+    });
   };
+
+  const [passwordMatch, setPasswordMatch] = useState(true)
 
   useEffect(() => {
-    setMatchedPassword(
-      formData.password === formData.confirmPassword || formData.confirmPassword === ""
-    );
-  }, [formData.password, formData.confirmPassword]);
+    setPasswordMatch(formData.password === formData.confirmPassword || formData.confirmPassword === "")
+  })
+
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
-      const registerForm = new FormData();
+      const register_form = new FormData()
 
       for (var key in formData) {
-        registerForm.append(key, formData[key]);
+        register_form.append(key, formData[key])
       }
 
-      const response = await fetch("https://homenest-backend.onrender.com/auth/register", {
+      const response = await fetch("http://localhost:7005/auth/register", {
         method: "POST",
-        body: registerForm,
-      });
-      
+        body: register_form
+      })
+
       if (response.ok) {
-        navigate("/login");
-      } else if (response.status === 409) {
-        setErrorMessage("Email already in use. Please use a different email.");
-      } else {
-        setErrorMessage("Registration failed. Please try again.");
+        navigate("/login")
       }
-    } catch (error) {
-      console.log("Registration Failed", error.message);
-      setErrorMessage("Registration failed. Please try again.");
+    } catch (err) {
+      console.log("Registration failed", err.message)
     }
-  };
+  }
 
   return (
     <div className="register">
       <div className="register_content">
         <form className="register_content_form" onSubmit={handleSubmit}>
           <input
-            type="text"
             placeholder="First Name"
             name="firstName"
             value={formData.firstName}
@@ -73,7 +64,6 @@ const RegisterPage = () => {
             required
           />
           <input
-            type="text"
             placeholder="Last Name"
             name="lastName"
             value={formData.lastName}
@@ -81,35 +71,34 @@ const RegisterPage = () => {
             required
           />
           <input
-            type="email"
             placeholder="Email"
             name="email"
+            type="email"
             value={formData.email}
             onChange={handleChange}
             required
           />
           <input
-            type="password"
             placeholder="Password"
             name="password"
             value={formData.password}
             onChange={handleChange}
+            type="password"
             required
           />
           <input
-            type="password"
             placeholder="Confirm Password"
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={handleChange}
+            type="password"
             required
           />
-          {!matchedPassword && (
-            <p style={{ color: "red" }}>Password is not matching</p>
+
+          {!passwordMatch && (
+            <p style={{ color: "red" }}>Passwords are not matched!</p>
           )}
-          {errorMessage && (
-            <p style={{ color: "red" }}>{errorMessage}</p>
-          )}
+
           <input
             id="image"
             type="file"
@@ -121,20 +110,19 @@ const RegisterPage = () => {
           />
           <label htmlFor="image">
             <img src="/assets/addImage.png" alt="add profile photo" />
-            <p>Upload your profile photo</p>
+            <p>Upload Your Photo</p>
           </label>
+
           {formData.profileImage && (
             <img
               src={URL.createObjectURL(formData.profileImage)}
-              alt="Profile Photo"
+              alt="profile photo"
               style={{ maxWidth: "80px" }}
             />
           )}
-          <button type="submit" disabled={!matchedPassword}>
-            Register
-          </button>
+          <button type="submit" disabled={!passwordMatch}>REGISTER</button>
         </form>
-        <a href="/login">Already have an account? Login In From Here</a>
+        <a href="/login">Already have an account? Log In Here</a>
       </div>
     </div>
   );

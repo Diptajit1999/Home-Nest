@@ -1,22 +1,22 @@
-import "../Styles/CreateListing.scss";
-import Navbar from "../Components/Navbar";
+import "../styles/CreateListing.scss";
+import Navbar from "../components/Navbar";
 import { categories, types, facilities } from "../data";
 
 import { RemoveCircleOutline, AddCircleOutline } from "@mui/icons-material";
-import variables from "../Styles/variables.scss";
+import variables from "../styles/variables.scss";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { IoIosImages } from "react-icons/io";
 import { useState } from "react";
 import { BiTrash } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Footer from "../Components/Footer"
+import Footer from "../components/Footer"
 
 const CreateListing = () => {
   const [category, setCategory] = useState("");
   const [type, setType] = useState("");
 
-  // location
+  /* LOCATION */
   const [formLocation, setFormLocation] = useState({
     streetAddress: "",
     aptSuite: "",
@@ -24,7 +24,6 @@ const CreateListing = () => {
     province: "",
     country: "",
   });
-
 
   const handleChangeLocation = (e) => {
     const { name, value } = e.target;
@@ -34,13 +33,13 @@ const CreateListing = () => {
     });
   };
 
-  // Basic Counts
+  /* BASIC COUNTS */
   const [guestCount, setGuestCount] = useState(1);
   const [bedroomCount, setBedroomCount] = useState(1);
   const [bedCount, setBedCount] = useState(1);
   const [bathroomCount, setBathroomCount] = useState(1);
 
-  // Amenities
+  /* AMENITIES */
   const [amenities, setAmenities] = useState([]);
 
   const handleSelectAmenities = (facility) => {
@@ -53,7 +52,7 @@ const CreateListing = () => {
     }
   };
 
-  // UPLOAD, DRAG & DROP, REMOVE PHOTOS
+  /* UPLOAD, DRAG & DROP, REMOVE PHOTOS */
   const [photos, setPhotos] = useState([]);
 
   const handleUploadPhotos = (e) => {
@@ -77,7 +76,7 @@ const CreateListing = () => {
     );
   };
 
-  // DESCRIPTION
+  /* DESCRIPTION */
   const [formDescription, setFormDescription] = useState({
     title: "",
     description: "",
@@ -102,7 +101,7 @@ const CreateListing = () => {
     e.preventDefault();
 
     try {
-      // Create a new FormData onject to handle file uploads
+      /* Create a new FormData onject to handle file uploads */
       const listingForm = new FormData();
       listingForm.append("creator", creatorId);
       listingForm.append("category", category);
@@ -123,13 +122,13 @@ const CreateListing = () => {
       listingForm.append("highlightDesc", formDescription.highlightDesc);
       listingForm.append("price", formDescription.price);
 
-      // Append each selected photos to the FormData object
+      /* Append each selected photos to the FormData object */
       photos.forEach((photo) => {
         listingForm.append("listingPhotos", photo);
       });
 
-      // Send a POST request to server
-      const response = await fetch("https://homenest-backend.onrender.com/properties/create", {
+      /* Send a POST request to server */
+      const response = await fetch("http://localhost:7005/properties/create", {
         method: "POST",
         body: listingForm,
       });

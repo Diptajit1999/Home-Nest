@@ -1,9 +1,9 @@
 import { IconButton } from "@mui/material";
 import { Search, Person, Menu } from "@mui/icons-material";
-import variables from "../Styles/variables.scss"
+import variables from "../styles/variables.scss";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import "../Styles/Navbar.scss";
+import "../styles/Navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { setLogout } from "../redux/state";
 
@@ -60,7 +60,7 @@ const Navbar = () => {
             <Person sx={{ color: variables.darkgrey }} />
           ) : (
             <img
-              src={`https://homenest-backend.onrender.com/${user.profileImagePath.replace(
+              src={`http://localhost:7005/${user.profileImagePath.replace(
                 "public",
                 ""
               )}`}

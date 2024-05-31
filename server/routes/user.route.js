@@ -1,16 +1,16 @@
-
 const express=require("express");
 const userRouter=express.Router()
 
-const {BookingModel} = require("../models/Booking.model")
-const {UserModel} = require("../models/user.model")
-const {ListingModel} = require("../models/Listing.model")
+const Booking = require("../models/Booking.model")
+const User = require("../models/user.model")
+const Listing = require("../models/Listing.model")
 
-// Getting trip list
+
+/* GET TRIP LIST */
 userRouter.get("/:userId/trips", async (req, res) => {
   try {
     const { userId } = req.params
-    const trips = await BookingModel.find({ customerId: userId }).populate("customerId hostId listingId")
+    const trips = await Booking.find({ customerId: userId }).populate("customerId hostId listingId")
     res.status(202).json(trips)
   } catch (err) {
     console.log(err)
@@ -18,12 +18,12 @@ userRouter.get("/:userId/trips", async (req, res) => {
   }
 })
 
-// Add listing to wishList
+/* ADD LISTING TO WISHLIST */
 userRouter.patch("/:userId/:listingId", async (req, res) => {
   try {
     const { userId, listingId } = req.params
-    const user = await UserModel.findById(userId)
-    const listing = await ListingModel.findById(listingId).populate("creator")
+    const user = await User.findById(userId)
+    const listing = await Listing.findById(listingId).populate("creator")
 
     const favoriteListing = user.wishList.find((item) => item._id.toString() === listingId)
 
@@ -42,11 +42,11 @@ userRouter.patch("/:userId/:listingId", async (req, res) => {
   }
 })
 
-// Getting property list
+/* GET PROPERTY LIST */
 userRouter.get("/:userId/properties", async (req, res) => {
   try {
     const { userId } = req.params
-    const properties = await ListingModel.find({ creator: userId }).populate("creator")
+    const properties = await Listing.find({ creator: userId }).populate("creator")
     res.status(202).json(properties)
   } catch (err) {
     console.log(err)
@@ -54,11 +54,11 @@ userRouter.get("/:userId/properties", async (req, res) => {
   }
 })
 
-// Getting Reservation list
+/* GET RESERVATION LIST */
 userRouter.get("/:userId/reservations", async (req, res) => {
   try {
     const { userId } = req.params
-    const reservations = await BookingModel.find({ hostId: userId }).populate("customerId hostId listingId")
+    const reservations = await Booking.find({ hostId: userId }).populate("customerId hostId listingId")
     res.status(202).json(reservations)
   } catch (err) {
     console.log(err)
@@ -68,4 +68,3 @@ userRouter.get("/:userId/reservations", async (req, res) => {
 
 
 module.exports = {userRouter}
-

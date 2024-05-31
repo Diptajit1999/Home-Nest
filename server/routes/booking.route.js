@@ -1,13 +1,13 @@
-const express=require("express");
+const express=require("express")
 const bookingRouter=express.Router()
 
-const BookingModel = require("../models/Booking.model")
+const Booking = require("../models/Booking.model")
 
-// Create Booking Route
+/* CREATE BOOKING */
 bookingRouter.post("/create", async (req, res) => {
   try {
     const { customerId, hostId, listingId, startDate, endDate, totalPrice } = req.body
-    const newBooking = new BookingModel({ customerId, hostId, listingId, startDate, endDate, totalPrice })
+    const newBooking = new Booking({ customerId, hostId, listingId, startDate, endDate, totalPrice })
     await newBooking.save()
     res.status(200).json(newBooking)
   } catch (err) {
