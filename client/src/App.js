@@ -3,6 +3,7 @@ import './App.css';
 import HomePage from "./Pages/HomePage"
 import RegisterPage from "./Pages/RegisterPage"
 import LoginPage from "./Pages/LoginPage";
+import CreateListing from "./Pages/CreateListing";
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Route path="/" element={<HomePage/>}/>
       <Route path="/register" element={<RegisterPage/>}/>
       <Route path="/login" element={<LoginPage/>}/>
+      <Route path="/create-listing" element={<CreateListing/>} />
      </Routes>
      </BrowserRouter>
     </div>

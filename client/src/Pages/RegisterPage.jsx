@@ -42,11 +42,11 @@ const RegisterPage = () => {
         registerForm.append(key, formData[key]);
       }
 
-      const response = await fetch("http://localhost:7005/auth/register", {
+      const response = await fetch("https://homenest-backend.onrender.com/auth/register", {
         method: "POST",
         body: registerForm,
       });
-
+      
       if (response.ok) {
         navigate("/login");
       } else if (response.status === 409) {

@@ -6,7 +6,7 @@ const {BookingModel} = require("../models/Booking.model")
 const {UserModel} = require("../models/user.model")
 const {ListingModel} = require("../models/Listing.model")
 
-/* GETTING TRIP LIST */
+// Getting trip list
 userRouter.get("/:userId/trips", async (req, res) => {
   try {
     const { userId } = req.params
@@ -18,7 +18,7 @@ userRouter.get("/:userId/trips", async (req, res) => {
   }
 })
 
-/* ADD LISTING TO WISHLIST */
+// Add listing to wishList
 userRouter.patch("/:userId/:listingId", async (req, res) => {
   try {
     const { userId, listingId } = req.params
@@ -42,7 +42,7 @@ userRouter.patch("/:userId/:listingId", async (req, res) => {
   }
 })
 
-/* GETTTING PROPERTY LIST */
+// Getting property list
 userRouter.get("/:userId/properties", async (req, res) => {
   try {
     const { userId } = req.params
@@ -54,7 +54,7 @@ userRouter.get("/:userId/properties", async (req, res) => {
   }
 })
 
-/* GETTING RESERVATION LIST */
+// Getting Reservation list
 userRouter.get("/:userId/reservations", async (req, res) => {
   try {
     const { userId } = req.params
