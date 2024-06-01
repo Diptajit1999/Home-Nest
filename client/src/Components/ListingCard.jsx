@@ -108,7 +108,7 @@ const ListingCard = ({
         {city}, {province}, {country}
       </h3>
       <p>{category}</p>
-
+      
       {!booking ? (
         <>
           <p>{type}</p>

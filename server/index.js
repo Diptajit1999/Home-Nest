@@ -8,6 +8,7 @@ const {bookingRouter}=require("./routes/booking.route")
 const {listingRouter}=require("./routes/listing.route")
 require("dotenv").config()
 
+
 const Port=process.env.port || 5005
 app.use(cors())
 app.use(express.json())

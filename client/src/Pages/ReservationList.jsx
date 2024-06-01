@@ -1,23 +1,11 @@
-
 import { useEffect, useState } from "react";
-import { Typography,styled } from '@mui/material';
 import "../styles/List.scss";
 import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { setReservationList } from "../redux/state";
 import ListingCard from "../components/ListingCard";
-import Footer from "../components/Footer";
-
-const EmptyMessage = styled(Typography)`
-  margin: 20px 0;
-  padding: 20px;
-  text-align: center;
-  color: green;
-  font-size: 1.2em;
-  background-color: #c7b1b1;
-  border-radius: 10px;
-`;
+import Footer from "../components/Footer"
 
 const ReservationList = () => {
   const [loading, setLoading] = useState(true);
@@ -54,26 +42,21 @@ const ReservationList = () => {
       <Navbar />
       <h1 className="title-list">Your Reservation List</h1>
       <div className="list">
-        {reservationList && reservationList.length > 0 ? (
-          reservationList.map(({ listingId, hostId, startDate, endDate, totalPrice, booking=true }) => (
-            <ListingCard
-              key={listingId._id}
-              listingId={listingId._id}
-              creator={hostId._id}
-              listingPhotoPaths={listingId.listingPhotoPaths}
-              city={listingId.city}
-              province={listingId.province}
-              country={listingId.country}
-              category={listingId.category}
-              startDate={startDate}
-              endDate={endDate}
-              totalPrice={totalPrice}
-              booking={booking}
-            />
-          ))
-        ) : (
-          <EmptyMessage variant="body1">Your reservation list is empty.</EmptyMessage>
-        )}
+        {reservationList?.map(({ listingId, hostId, startDate, endDate, totalPrice, booking=true }) => (
+          <ListingCard
+            listingId={listingId._id}
+            creator={hostId._id}
+            listingPhotoPaths={listingId.listingPhotoPaths}
+            city={listingId.city}
+            province={listingId.province}
+            country={listingId.country}
+            category={listingId.category}
+            startDate={startDate}
+            endDate={endDate}
+            totalPrice={totalPrice}
+            booking={booking}
+          />
+        ))}
       </div>
       <Footer />
     </>

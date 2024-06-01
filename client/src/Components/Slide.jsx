@@ -1,11 +1,11 @@
-import "../styles/Slide.scss";
+import "../styles/Slide.scss"
 
 const Slide = () => {
   return (
     <div className="slide">
       <h1>
-        Welcome Home! No Matter Where You Roam <br /> Live in the Moment. Craft
-        Unforgettable Memories
+        Welcome Home! Anywhere you roam <br /> Stay in the moment. Make your
+        memories
       </h1>
     </div>
   );
