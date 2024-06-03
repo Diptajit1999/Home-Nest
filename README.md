@@ -2,13 +2,12 @@
 
 # HOME NEST
 
-Clickit is a Ecommerce website for Shopping Clothes. This website contains details for Clothing products,Verifying user Account and Booking products.
 
 
 ## Deployment
 
 
-[Netlify Deployed Link:  HOME NEST](https://dainty-snake-6499.vercel.app/)
+
 
 
 
