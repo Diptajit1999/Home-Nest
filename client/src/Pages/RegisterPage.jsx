@@ -43,7 +43,7 @@ const RegisterPage = () => {
         method: "POST",
         body: register_form
       })
-
+console.log(response)
       if (response.ok) {
         navigate("/login")
       }

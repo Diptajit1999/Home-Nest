@@ -1,8 +1,19 @@
+import styled from "styled-components";
 import "../styles/List.scss";
 import { useSelector } from "react-redux";
 import Navbar from "../components/Navbar";
 import ListingCard from "../components/ListingCard";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
+
+const EmptyMessage = styled.p`
+  margin: 20px 0;
+  padding: 20px;
+  text-align: center;
+  color: #16bc2c;
+  font-size: 1.6em;
+  background-color: #565151;
+  border-radius: 10px;
+`;
 
 const WishList = () => {
   const wishList = useSelector((state) => state.user.wishList);
@@ -12,32 +23,37 @@ const WishList = () => {
       <Navbar />
       <h1 className="title-list">Your Wish List</h1>
       <div className="list">
-        {wishList?.map(
-          ({
-            _id,
-            creator,
-            listingPhotoPaths,
-            city,
-            province,
-            country,
-            category,
-            type,
-            price,
-            booking = false,
-          }) => (
-            <ListingCard
-              listingId={_id}
-              creator={creator}
-              listingPhotoPaths={listingPhotoPaths}
-              city={city}
-              province={province}
-              country={country}
-              category={category}
-              type={type}
-              price={price}
-              booking={booking}
-            />
+        {wishList?.length > 0 ? (
+          wishList.map(
+            ({
+              _id,
+              creator,
+              listingPhotoPaths,
+              city,
+              province,
+              country,
+              category,
+              type,
+              price,
+              booking = false,
+            }) => (
+              <ListingCard
+                key={_id}
+                listingId={_id}
+                creator={creator}
+                listingPhotoPaths={listingPhotoPaths}
+                city={city}
+                province={province}
+                country={country}
+                category={category}
+                type={type}
+                price={price}
+                booking={booking}
+              />
+            )
           )
+        ) : (
+          <EmptyMessage>Your wish list is empty.</EmptyMessage>
         )}
       </div>
       <Footer />

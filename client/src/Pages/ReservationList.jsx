@@ -1,17 +1,33 @@
 import { useEffect, useState } from "react";
-import "../styles/List.scss";
+import styled from "styled-components";
 import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { setReservationList } from "../redux/state";
 import ListingCard from "../components/ListingCard";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
+
+const Title = styled.h1`
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+  margin-left: 100px;
+`;
+
+const Message = styled.p`
+  margin: 20px 0;
+  padding: 20px;
+  text-align: center;
+  color: #16bc2c;
+  font-size: 1.6em;
+  background-color: #565151;
+  border-radius: 10px;
+`;
 
 const ReservationList = () => {
   const [loading, setLoading] = useState(true);
   const userId = useSelector((state) => state.user._id);
   const reservationList = useSelector((state) => state.user.reservationList);
-
   const dispatch = useDispatch();
 
   const getReservationList = async () => {
@@ -22,7 +38,6 @@ const ReservationList = () => {
           method: "GET",
         }
       );
-
       const data = await response.json();
       dispatch(setReservationList(data));
       setLoading(false);
@@ -40,23 +55,28 @@ const ReservationList = () => {
   ) : (
     <>
       <Navbar />
-      <h1 className="title-list">Your Reservation List</h1>
+      <Title>Your Reservation List</Title>
       <div className="list">
-        {reservationList?.map(({ listingId, hostId, startDate, endDate, totalPrice, booking=true }) => (
-          <ListingCard
-            listingId={listingId._id}
-            creator={hostId._id}
-            listingPhotoPaths={listingId.listingPhotoPaths}
-            city={listingId.city}
-            province={listingId.province}
-            country={listingId.country}
-            category={listingId.category}
-            startDate={startDate}
-            endDate={endDate}
-            totalPrice={totalPrice}
-            booking={booking}
-          />
-        ))}
+        {reservationList?.length > 0 ? (
+          reservationList.map(({ listingId, hostId, startDate, endDate, totalPrice, booking = true }) => (
+            <ListingCard
+              key={listingId._id}
+              listingId={listingId._id}
+              creator={hostId._id}
+              listingPhotoPaths={listingId.listingPhotoPaths}
+              city={listingId.city}
+              province={listingId.province}
+              country={listingId.country}
+              category={listingId.category}
+              startDate={startDate}
+              endDate={endDate}
+              totalPrice={totalPrice}
+              booking={booking}
+            />
+          ))
+        ) : (
+          <Message>No reservations found.</Message>
+        )}
       </div>
       <Footer />
     </>

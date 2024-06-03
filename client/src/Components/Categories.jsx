@@ -1,16 +1,28 @@
 import { categories } from "../data";
 import "../styles/Categories.scss"
 import { Link } from "react-router-dom";
+import styled from "styled-components"
+
+const Para = styled.p`
+  text-align: center;
+  margin-top: 20px;
+  color: #16bc2c;
+  font-size: 1.6em;
+  background-color: #565151;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
 
 const Categories = () => {
   return (
     <div className="categories">
-      <h1>Explore Top </h1>
-      <p>
+      <h1>Discover Top Places to Visit </h1>
+      <Para>
         Explore our wide range of vacation rentals that cater to all types of
         travelers. Immerse yourself in the local culture, enjoy the comforts of
         home, and create unforgettable memories in your dream destination.
-      </p>
+      </Para>
 
       <div className="categories_list">
         {categories?.slice(1, 7).map((category, index) => (

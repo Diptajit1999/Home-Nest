@@ -43,7 +43,7 @@
       flex-wrap: wrap;
       gap: 20px;
       padding: 0 20px;
-
+      
       @include lg {
         padding: 0 20px;
       }
@@ -57,13 +57,13 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 110px;
-        height: 90px;
+        width: 120px;
+        height: 110px;
         border: 1px solid $grey;
         border-radius: 10px;
         cursor: pointer;
         transition: 0.2s ease;
-
+        
         &_icon {
           font-size: 30px;
           color: black;
@@ -145,6 +145,8 @@
     }
 
     .location {
+
+      
       p {
         font-weight: 700;
         margin: 20px 0 10px;
@@ -155,8 +157,8 @@
         border-radius: 10px;
         font-size: 16px;
         font-weight: 600;
-        width: 100%;
-
+        width: 80%;
+        
         &:focus {
           outline: none;
         }
@@ -217,14 +219,13 @@
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
-
       .facility {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 200px;
-        height: 90px;
+        height: 110px;
         border: 1px solid $grey;
         border-radius: 10px;
         cursor: pointer;
@@ -380,7 +381,7 @@
 
   .submit_btn {
     margin-top: 40px;
-
+    margin-left: 60px;
     @include buttonStyle;
 
     &:hover {
