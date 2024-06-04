@@ -5,11 +5,11 @@
 
 
 ## Deployment
-->Backend Deployed Link(HOME-NEST)->https://homenest-backend.onrender.com
-->.env file consists of -:
-port=7005
-mongodbURL=your mongodb driver link
-JWT_SECRET=Any word
+- Backend Deployed Link(HOME-NEST)->https://homenest-backend.onrender.com
+- .env file consists of -:
+.port=7005
+.mongodbURL=your mongodb driver link
+.JWT_SECRET=Any word
 
 
 
