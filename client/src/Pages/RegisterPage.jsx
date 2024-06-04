@@ -39,7 +39,7 @@ const RegisterPage = () => {
         register_form.append(key, formData[key])
       }
 
-      const response = await fetch("https://homenest-backend.onrender.com/auth/register", {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/register`, {
         method: "POST",
         body: register_form
       })

@@ -1,16 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import HomePage from "./pages/HomePage";
-import RegisterPage from "./pages/RegisterPage";
-import LoginPage from "./pages/LoginPage";
-import CreateListing from "./pages/CreateListing";
-import ListingDetails from "./pages/ListingDetails";
-import TripList from "./pages/TripList";
-import WishList from "./pages/WishList";
-import PropertyList from "./pages/PropertyList";
-import ReservationList from "./pages/ReservationList";
-import CategoryPage from "./pages/CategoryPage";
-import SearchPage from "./pages/SearchPage";
+import HomePage from "./Pages/HomePage";
+import RegisterPage from "./Pages/RegisterPage";
+import LoginPage from "./Pages/LoginPage";
+import CreateListing from "./Pages/CreateListing";
+import ListingDetails from "./Pages/ListingDetails";
+import TripList from "./Pages/TripList";
+import WishList from "./Pages/WishList"
+import PropertyList from "./Pages/PropertyList";
+import ReservationList from "./Pages/ReservationList";
+import CategoryPage from "./Pages/CategoryPage";
+import SearchPage from "./Pages/SearchPage";
 
 
 function App() {
@@ -31,6 +31,7 @@ function App() {
           <Route path="/:userId/reservations" element={<ReservationList />} />
         </Routes>
       </BrowserRouter>
+      <p>{process.env.REACT_APP_BACKEND_URL}</p>
     </div>
   );
 }

@@ -60,7 +60,7 @@ const Navbar = () => {
             <Person sx={{ color: variables.darkgrey }} />
           ) : (
             <img
-              src={`https://homenest-backend.onrender.com/${user.profileImagePath.replace(
+              src={`${process.env.REACT_APP_BACKEND_URL}/${user.profileImagePath.replace(
                 "public",
                 ""
               )}`}

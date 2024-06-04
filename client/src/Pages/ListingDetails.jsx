@@ -20,7 +20,7 @@ const ListingDetails = () => {
   const getListingDetails = async () => {
     try {
       const response = await fetch(
-        `https://homenest-backend.onrender.com/properties/${listingId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/properties/${listingId}`,
         {
           method: "GET",
         }
@@ -75,7 +75,7 @@ const ListingDetails = () => {
         totalPrice: listing.price * dayCount,
       }
 
-      const response = await fetch("https://homenest-backend.onrender.com/bookings/create", {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/bookings/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -106,7 +106,7 @@ const ListingDetails = () => {
         <div className="photos">
           {listing.listingPhotoPaths?.map((item) => (
             <img
-              src={`https://homenest-backend.onrender.com/${item.replace("public", "")}`}
+              src={`${process.env.REACT_APP_BACKEND_URL}/${item.replace("public", "")}`}
               alt="listing photo"
             />
           ))}
@@ -124,7 +124,7 @@ const ListingDetails = () => {
 
         <div className="profile">
           <img
-            src={`https://homenest-backend.onrender.com/${listing.creator.profileImagePath.replace(
+            src={`${process.env.REACT_APP_BACKEND_URL}/${listing.creator.profileImagePath.replace(
               "public",
               ""
             )}`}

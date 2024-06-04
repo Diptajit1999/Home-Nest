@@ -128,7 +128,7 @@ const CreateListing = () => {
       });
 
       /* Send a POST request to server */
-      const response = await fetch("https://homenest-backend.onrender.com/properties/create", {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/properties/create`, {
         method: "POST",
         body: listingForm,
       });

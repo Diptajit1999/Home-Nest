@@ -33,7 +33,7 @@ const ReservationList = () => {
   const getReservationList = async () => {
     try {
       const response = await fetch(
-        `https://homenest-backend.onrender.com/users/${userId}/reservations`,
+        `${process.env.REACT_APP_BACKEND_URL}/users/${userId}/reservations`,
         {
           method: "GET",
         }

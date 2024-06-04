@@ -28,7 +28,7 @@ const TripList = () => {
   const getTripList = async () => {
     try {
       const response = await fetch(
-        `https://homenest-backend.onrender.com/users/${userId}/trips`,
+        `${process.env.REACT_APP_BACKEND_URL}/users/${userId}/trips`,
         {
           method: "GET",
         }

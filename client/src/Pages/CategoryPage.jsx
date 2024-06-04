@@ -10,6 +10,7 @@ import Footer from "../components/Footer";
 import styled from "styled-components"
 
 
+
 const NoCategoryMessage = styled.p`
   text-align: center;
   margin-top: 20px;
@@ -31,7 +32,7 @@ const CategoryPage = () => {
   const getFeedListings = async () => {
     try {
       const response = await fetch(
-        `https://homenest-backend.onrender.com/properties?category=${category}`,
+        `${process.env.REACT_APP_BACKEND_URL}/properties?category=${category}`,
         {
           method: "GET",
         }

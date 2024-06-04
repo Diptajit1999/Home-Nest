@@ -45,8 +45,8 @@ const Listings = () => {
     try {
       const response = await fetch(
         selectedCategory !== "All"
-          ? `https://homenest-backend.onrender.com/properties?category=${selectedCategory}`
-          : "https://homenest-backend.onrender.com/properties",
+          ? `${process.env.REACT_APP_BACKEND_URL}/properties?category=${selectedCategory}`
+          : `${process.env.REACT_APP_BACKEND_URL}/properties`,
         {
           method: "GET",
         }
