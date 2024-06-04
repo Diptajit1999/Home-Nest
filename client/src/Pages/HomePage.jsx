@@ -1,8 +1,8 @@
-import Navbar from "../components/Navbar"
-import Slide from "../components/Slide"
-import Categories from "../components/Categories"
-import Listings from "../components/Listings"
-import Footer from "../components/Footer"
+import Navbar from "../Components/Navbar"
+import Slide from "../Components/Slide"
+import Categories from "../Components/Categories"
+import Listings from "../Components/Listings"
+import Footer from "../Components/Footer"
 
 const HomePage = () => {
   return (

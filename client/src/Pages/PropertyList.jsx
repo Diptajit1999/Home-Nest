@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import "../styles/List.scss";
 import { useDispatch, useSelector } from "react-redux";
-import Navbar from "../components/Navbar";
-import ListingCard from "../components/ListingCard";
+import Navbar from "../Components/Navbar";
+import ListingCard from "../Components/ListingCard";
 import { useEffect, useState } from "react";
 import { setPropertyList } from "../redux/state";
-import Loader from "../components/Loader";
-import Footer from "../components/Footer";
+import Loader from "../Components/Loader";
+import Footer from "../Components/Footer";
 
 const Message = styled.p`
   margin: 20px 0;
@@ -27,7 +27,7 @@ const PropertyList = () => {
 
   const getPropertyList = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/${user._id}/properties`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}Components/users/${user._id}/properties`, {
         method: "GET"
       });
       const data = await response.json();

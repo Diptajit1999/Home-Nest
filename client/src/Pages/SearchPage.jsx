@@ -4,10 +4,10 @@ import { Typography,styled } from '@mui/material';
 import { useSelector, useDispatch } from "react-redux";
 import { setListings } from "../redux/state";
 import { useEffect, useState } from "react";
-import Loader from "../components/Loader";
-import Navbar from "../components/Navbar";
-import ListingCard from "../components/ListingCard";
-import Footer from "../components/Footer";
+import Loader from "../Components/Loader";
+import Navbar from "../Components/Navbar";
+import ListingCard from "../Components/ListingCard";
+import Footer from "../Components/Footer";
 import "../styles/List.scss";
 
 const EmptyMessage = styled(Typography)`
@@ -29,7 +29,7 @@ const SearchPage = () => {
 
   const getSearchListings = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/properties/search/${search}`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}Components/properties/search/${search}`, {
         method: "GET",
       });
 

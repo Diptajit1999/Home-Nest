@@ -1,5 +1,5 @@
 import "../styles/CreateListing.scss";
-import Navbar from "../components/Navbar";
+import Navbar from "../Components/Navbar";
 import { categories, types, facilities } from "../data";
 
 import { RemoveCircleOutline, AddCircleOutline } from "@mui/icons-material";
@@ -10,7 +10,7 @@ import { useState } from "react";
 import { BiTrash } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/Footer"
+import Footer from "../Components/Footer"
 
 const CreateListing = () => {
   const [category, setCategory] = useState("");

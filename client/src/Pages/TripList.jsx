@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import Loader from "../components/Loader";
-import Navbar from "../components/Navbar";
+import Loader from "../Components/Loader";
+import Navbar from "../Components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { setTripList } from "../redux/state";
-import ListingCard from "../components/ListingCard";
-import Footer from "../components/Footer";
+import ListingCard from "../Components/ListingCard";
+import Footer from "../Components/Footer";
 
 const NoTripsMessage = styled.p`
   text-align: center;
@@ -28,7 +28,7 @@ const TripList = () => {
   const getTripList = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/users/${userId}/trips`,
+        `${process.env.REACT_APP_BACKEND_URL}Components/users/${userId}/trips`,
         {
           method: "GET",
         }

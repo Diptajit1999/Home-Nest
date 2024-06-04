@@ -6,10 +6,10 @@ import { facilities } from "../data";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
-import Loader from "../components/Loader";
-import Navbar from "../components/Navbar";
+import Loader from "../Components/Loader";
+import Navbar from "../Components/Navbar";
 import { useSelector } from "react-redux";
-import Footer from "../components/Footer"
+import Footer from "../Components/Footer"
 
 const ListingDetails = () => {
   const [loading, setLoading] = useState(true);
@@ -191,6 +191,5 @@ const ListingDetails = () => {
     </>
   );
 };
-
 
 export default ListingDetails;

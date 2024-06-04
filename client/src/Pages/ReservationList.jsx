@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import Loader from "../components/Loader";
-import Navbar from "../components/Navbar";
+import Loader from "../Components/Loader";
+import Navbar from "../Components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { setReservationList } from "../redux/state";
-import ListingCard from "../components/ListingCard";
-import Footer from "../components/Footer";
+import ListingCard from "../Components/ListingCard";
+import Footer from "../Components/Footer";
 
 const Title = styled.h1`
   font-size: 1.8rem;

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import "../styles/List.scss";
 import { useSelector } from "react-redux";
-import Navbar from "../components/Navbar";
-import ListingCard from "../components/ListingCard";
-import Footer from "../components/Footer";
+import Navbar from "../Components/Navbar";
+import ListingCard from "../Components/ListingCard";
+import Footer from "../Components/Footer";
 
 const EmptyMessage = styled.p`
   margin: 20px 0;

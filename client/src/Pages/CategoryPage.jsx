@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import "../styles/List.scss";
-import Navbar from "../components/Navbar";
+import Navbar from "../Components/Navbar";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setListings } from "../redux/state";
-import Loader from "../components/Loader";
-import ListingCard from "../components/ListingCard";
-import Footer from "../components/Footer";
+import Loader from "../Components/Loader";
+import ListingCard from "../Components/ListingCard";
+import Footer from "../Components/Footer";
 import styled from "styled-components"
 
 
 
-const NoCategoryMessage = styled.p`
+const NoCategoryMessage = styled.p`Components
   text-align: center;
   margin-top: 20px;
   color: #16bc2c;
