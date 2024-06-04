@@ -2,13 +2,17 @@
 
 # HOME NEST
 
-Clickit is a Ecommerce website for Shopping Clothes. This website contains details for Clothing products,Verifying user Account and Booking products.
 
 
 ## Deployment
+- Backend Deployed Link(HOME-NEST)->https://homenest-backend.onrender.com
+- .env file consists of -:
+.port=7005
+.mongodbURL=your mongodb driver link
+.JWT_SECRET=Any word
 
 
-[Netlify Deployed Link:  HOME NEST](https://dainty-snake-6499.vercel.app/)
+
 
 
 
