@@ -49,6 +49,7 @@ const CategoryPage = () => {
     getFeedListings();
   }, [category]);
 
+
   return (
     <>
       <Navbar />
