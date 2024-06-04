@@ -27,7 +27,7 @@ const PropertyList = () => {
 
   const getPropertyList = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}Components/users/${user._id}/properties`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/users/${user._id}/properties`, {
         method: "GET"
       });
       const data = await response.json();
