@@ -45,6 +45,7 @@ const CategoryPage = () => {
     }
   };
 
+  
   useEffect(() => {
     getFeedListings();
   }, [category]);
