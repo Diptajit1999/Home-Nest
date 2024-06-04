@@ -7,7 +7,8 @@ We offer a user-friendly platform with a variety of features to help you find yo
 Do you have a rental property to share? Our platform makes it simple to list your property, attracting potential renters with a dedicated Property Listing Page. Manage bookings and reservations seamlessly with our user-friendly tools.
 
 ## Deployment
-- Backend Deployed Link(HOME-NEST)->https://homenest-backend.onrender.com
+[Vercel Deployed Link:  Clickit](https://dainty-snake-6499.vercel.app/)
+- [Backend Deployed Link: HOME-NEST]->(https://homenest-backend.onrender.com/)
 - .env file consists of -:
 1) port=7005
 2) mongodbURL=your mongodb driver link
