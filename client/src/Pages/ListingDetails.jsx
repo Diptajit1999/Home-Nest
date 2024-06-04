@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../styles/ListingDetails.scss";
+import "../Styles/ListingDetails.scss";
 import { useNavigate, useParams } from "react-router-dom";
 import { facilities } from "../data";
 

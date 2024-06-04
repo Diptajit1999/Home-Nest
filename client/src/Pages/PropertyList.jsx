@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import "../styles/List.scss";
+import "../Styles/List.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Components/Navbar";
 import ListingCard from "../Components/ListingCard";

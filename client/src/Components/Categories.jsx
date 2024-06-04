@@ -1,5 +1,5 @@
 import { categories } from "../data";
-import "../styles/Categories.scss"
+import "../Styles/Categories.scss"
 import { Link } from "react-router-dom";
 import styled from "styled-components"
 

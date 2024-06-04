@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../styles/List.scss";
+import "../Styles/List.scss";
 import Navbar from "../Components/Navbar";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,7 +11,7 @@ import styled from "styled-components"
 
 
 
-const NoCategoryMessage = styled.p`Components
+const NoCategoryMessage = styled.p`
   text-align: center;
   margin-top: 20px;
   color: #16bc2c;

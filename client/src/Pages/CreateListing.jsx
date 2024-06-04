@@ -1,9 +1,9 @@
-import "../styles/CreateListing.scss";
+import "../Styles/CreateListing.scss";
 import Navbar from "../Components/Navbar";
 import { categories, types, facilities } from "../data";
 
 import { RemoveCircleOutline, AddCircleOutline } from "@mui/icons-material";
-import variables from "../styles/variables.scss";
+import variables from "../Styles/variables.scss";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { IoIosImages } from "react-icons/io";
 import { useState } from "react";

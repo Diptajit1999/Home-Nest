@@ -8,7 +8,7 @@ import Loader from "../Components/Loader";
 import Navbar from "../Components/Navbar";
 import ListingCard from "../Components/ListingCard";
 import Footer from "../Components/Footer";
-import "../styles/List.scss";
+import "../Styles/List.scss";
 
 const EmptyMessage = styled(Typography)`
   margin: 20px 0;

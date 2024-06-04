@@ -1,4 +1,4 @@
-import "../styles/Footer.scss"
+import "../Styles/Footer.scss"
 import { LocationOn, LocalPhone, Email } from "@mui/icons-material"
 const Footer = () => {
   return (

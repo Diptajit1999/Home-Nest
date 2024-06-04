@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import "../styles/List.scss";
+import "../Styles/List.scss";
 import { useSelector } from "react-redux";
 import Navbar from "../Components/Navbar";
 import ListingCard from "../Components/ListingCard";
@@ -14,6 +14,7 @@ const EmptyMessage = styled.p`
   background-color: #565151;
   border-radius: 10px;
 `;
+
 
 const WishList = () => {
   const wishList = useSelector((state) => state.user.wishList);
