@@ -68,7 +68,9 @@ User Features :
 
 <img src="https://github.com/Diptajit1999/Home-Nest/blob/main/client/screenshots/ToopPotentials.PNG"  width="600" >
 
-<img src="https://github.com/Diptajit1999/Home-Nest/blob/main/client/screenshots/WishListPage.PNG"  width="600" > <img src="https://github.com/Diptajit1999/Home-Nest/blob/main/client/screenshots/propertyPage.PNG"  width="600" >
+<img src="https://github.com/Diptajit1999/Home-Nest/blob/main/client/screenshots/WishListPage.PNG"  width="600" >
+
+<img src="https://github.com/Diptajit1999/Home-Nest/blob/main/client/screenshots/propertyPage.PNG"  width="600" >
 
 
 ## Contributors
