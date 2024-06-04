@@ -7,9 +7,9 @@
 ## Deployment
 - Backend Deployed Link(HOME-NEST)->https://homenest-backend.onrender.com
 - .env file consists of -:
-.port=7005
-.mongodbURL=your mongodb driver link
-.JWT_SECRET=Any word
+port=7005
+mongodbURL=your mongodb driver link
+JWT_SECRET=Any word
 
 
 
@@ -43,7 +43,7 @@ User Features :
 ## Project Screenshots
 
 - Landing Page
-<img src="https://github.com/Sushree-01/dainty-snake-6499/blob/main/Screenshots/Landing%20Page.PNG"  width="600" >
+<img src="https://github.com/Diptajit1999/Home-Nest/blob/main/client/screenshots/BookingTripListPage.PNG"  width="600" >
 
 - Product Page
 <img src="https://github.com/Sushree-01/dainty-snake-6499/blob/main/Screenshots/Product%20Page(Store%20page).PNG"  width="600" >
