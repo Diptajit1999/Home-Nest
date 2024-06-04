@@ -29,7 +29,7 @@ const SearchPage = () => {
 
   const getSearchListings = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}Components/properties/search/${search}`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/properties/search/${search}`, {
         method: "GET",
       });
 

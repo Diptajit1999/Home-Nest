@@ -31,7 +31,6 @@ function App() {
           <Route path="/:userId/reservations" element={<ReservationList />} />
         </Routes>
       </BrowserRouter>
-      <p>{process.env.REACT_APP_BACKEND_URL}</p>
     </div>
   );
 }
