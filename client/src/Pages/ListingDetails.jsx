@@ -20,8 +20,8 @@ const ListingDetails = () => {
   console.log(location)
   const bookedBy = location.state?.bookedBy || 'Unknown'; // Access bookedBy data
   const bookedBydataLastName = location.state?.bookedBydataLastName || 'Unknown'; // Access bookedBy data
-console.log("bookedBy->",bookedBy)
-console.log("bookedBydataLastName->",bookedBydataLastName)
+// console.log("bookedBy->",bookedBy)
+// console.log("bookedBydataLastName->",bookedBydataLastName)
   const getListingDetails = async () => {
     try {
       const response = await fetch(

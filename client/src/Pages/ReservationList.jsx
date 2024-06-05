@@ -31,8 +31,8 @@ const ReservationList = () => {
   const userId = useSelector((state) => state.user._id);
   const reservationList = useSelector((state) => state.user.reservationList);
   const dispatch = useDispatch();
-  const [bookedBydata,setBookedBy]=useState("")
-  const [bookedBydataLastName,setBookedBydataLastName]=useState("")
+  const [bookedBydata,setBookedBy]=useState("" || "unknown")
+  const [bookedBydataLastName,setBookedBydataLastName]=useState(""||"unknown")
   
   
   const getReservationList = async () => {
@@ -45,11 +45,15 @@ const ReservationList = () => {
       );
       const data = await response.json();
       console.log("data",data)
+      console.log("data",data.length)
       // console.log("customer data->",data.customerId.firstName)
-      console.log(data[0])
-      console.log(data[0].customerId.firstName)
-      setBookedBy(data[0].customerId.firstName)
-      setBookedBydataLastName(data[0].customerId.lastName)
+      // console.log(data[0])
+      // console.log(data[0].customerId.firstName)
+      if (data.length > 0 && data[0]?.customerId) {
+        setBookedBy(data[0].customerId.firstName);
+        setBookedBydataLastName(data[0].customerId.lastName);
+      }
+      
       dispatch(setReservationList(data));
       setLoading(false);
     } catch (err) {
@@ -60,8 +64,8 @@ const ReservationList = () => {
   useEffect(() => {
     getReservationList();
   }, []);
-console.log(bookedBydata)
-console.log("reservationList ->",reservationList )
+// console.log(bookedBydata)
+// console.log("reservationList ->",reservationList )
 
 
   return loading ? (
