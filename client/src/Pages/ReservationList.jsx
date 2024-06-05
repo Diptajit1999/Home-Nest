@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Loader from "../Components/Loader";
 import Navbar from "../Components/Navbar";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, } from "react-redux";
 import { setReservationList } from "../redux/state";
 import ListingCard from "../Components/ListingCard";
 import Footer from "../Components/Footer";
+
+
 
 const Title = styled.h1`
   font-size: 1.8rem;
@@ -29,7 +31,10 @@ const ReservationList = () => {
   const userId = useSelector((state) => state.user._id);
   const reservationList = useSelector((state) => state.user.reservationList);
   const dispatch = useDispatch();
-
+  const [bookedBydata,setBookedBy]=useState("")
+  const [bookedBydataLastName,setBookedBydataLastName]=useState("")
+  
+  
   const getReservationList = async () => {
     try {
       const response = await fetch(
@@ -39,6 +44,12 @@ const ReservationList = () => {
         }
       );
       const data = await response.json();
+      console.log("data",data)
+      // console.log("customer data->",data.customerId.firstName)
+      console.log(data[0])
+      console.log(data[0].customerId.firstName)
+      setBookedBy(data[0].customerId.firstName)
+      setBookedBydataLastName(data[0].customerId.lastName)
       dispatch(setReservationList(data));
       setLoading(false);
     } catch (err) {
@@ -49,6 +60,9 @@ const ReservationList = () => {
   useEffect(() => {
     getReservationList();
   }, []);
+console.log(bookedBydata)
+console.log("reservationList ->",reservationList )
+
 
   return loading ? (
     <Loader />
@@ -59,6 +73,7 @@ const ReservationList = () => {
       <div className="list">
         {reservationList?.length > 0 ? (
           reservationList.map(({ listingId, hostId, startDate, endDate, totalPrice, booking = true }) => (
+            <div key={listingId._id} >
             <ListingCard
               key={listingId._id}
               listingId={listingId._id}
@@ -72,7 +87,10 @@ const ReservationList = () => {
               endDate={endDate}
               totalPrice={totalPrice}
               booking={booking}
+             bookedBy={bookedBydata}
+             bookedBydataLastName={bookedBydataLastName}
             />
+            </div>
           ))
         ) : (
           <Message>No reservations found.</Message>

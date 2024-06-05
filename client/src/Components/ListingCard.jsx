@@ -23,6 +23,8 @@ const ListingCard = ({
   endDate,
   totalPrice,
   booking,
+  bookedBy,
+  bookedBydataLastName
 }) => {
   /* SLIDER FOR IMAGES */
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -67,7 +69,7 @@ const ListingCard = ({
     <div
       className="listing-card"
       onClick={() => {
-        navigate(`/properties/${listingId}`);
+        navigate(`/properties/${listingId}`,{ state: { bookedBy ,bookedBydataLastName}});
       }}
     >
       <div className="slider-container">

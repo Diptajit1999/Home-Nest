@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../Styles/ListingDetails.scss";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams,useLocation  } from "react-router-dom";
 import { facilities } from "../data";
 
 import "react-date-range/dist/styles.css";
@@ -16,7 +16,12 @@ const ListingDetails = () => {
 
   const { listingId } = useParams();
   const [listing, setListing] = useState(null);
-
+  const location = useLocation(); // Initialize useLocation
+  console.log(location)
+  const bookedBy = location.state?.bookedBy || 'Unknown'; // Access bookedBy data
+  const bookedBydataLastName = location.state?.bookedBydataLastName || 'Unknown'; // Access bookedBy data
+console.log("bookedBy->",bookedBy)
+console.log("bookedBydataLastName->",bookedBydataLastName)
   const getListingDetails = async () => {
     try {
       const response = await fetch(
@@ -27,6 +32,7 @@ const ListingDetails = () => {
       );
 
       const data = await response.json();
+      console.log(data)
       setListing(data);
       setLoading(false);
     } catch (err) {
@@ -38,7 +44,8 @@ const ListingDetails = () => {
     getListingDetails();
   }, []);
 
-  console.log(listing)
+  console.log("listingDetail->",listing)
+  console.log("listingDetail->",listing)
 
 
   /* BOOKING CALENDAR */
@@ -132,6 +139,9 @@ const ListingDetails = () => {
           <h3>
             Hosted by {listing.creator.firstName} {listing.creator.lastName}
           </h3>
+          {bookedBy!=="Unknown" && (<h3>
+            , Booked by {bookedBy} {bookedBydataLastName}
+          </h3>)}
         </div>
         <hr />
 
